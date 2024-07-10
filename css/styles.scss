@@ -1,0 +1,172 @@
+@import "nullstyle";
+
+$color-primary: #2c3e50;
+$color-secondary: #34495e;
+$color-text: #555;
+$color-link: #1da1f2;
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:visited {
+  color: white;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: repeating-linear-gradient(45deg, #f0f0f0, #f0f0f0 10px, #ffffff 10px, #ffffff 20px); /* Повторяющийся градиентный узор */
+}
+
+.wrapper {
+  flex: 1;
+}
+
+.header {
+  background-color: $color-primary;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.nav {
+  background-color: $color-secondary;
+  padding: 10px 0;
+  text-align: center;
+
+  &__item {
+    display: inline;
+    margin-right: 20px;
+
+    &__link {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 5px 10px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: $color-primary;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+.content {
+  text-align: center;
+  margin: 50px auto;
+
+  &__title {
+    font-size: 2.5em;
+    color: $color-primary;
+  }
+
+  &__description {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: $color-text;
+  }
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.gallery__item {
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal__content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 600px;
+}
+
+.modal__caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+}
+
+.modal__close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+
+  &:hover,
+  &:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+.footer {
+  background-color: $color-primary;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
+
+  &__content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &__link {
+    color: $color-link;
+    text-decoration: none;
+    font-weight: bold;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

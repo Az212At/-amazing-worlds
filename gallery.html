@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Галерея</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="wrapper">
+
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
+                <li class="nav__item"><a href="gallery.html" class="nav__link">Галерея</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="gallery">
+        <div class="gallery__item" data-description="Таинственный Agathis, погружённый в вечный сумрак."><img src="images/agathis.png" alt="agathis"></div>
+        <div class="gallery__item" data-description="Футуристический пейзаж, где природа и технологии сливаются в гармоничное будущее."><img src="images/future.png" alt="future"></div>
+        <div class="gallery__item" data-description="Величественные горы, чьи вершины достигают облаков, окутанные мистическим туманом."><img src="images/mountains.png" alt="mountains"></div>
+        <div class="gallery__item" data-description="Мистическая поляна, усеянная светящимися грибами, ожившими из сказки."><img src="images/mushrooms.png" alt="mushrooms"></div>
+        <div class="gallery__item" data-description="Необъятный лес, где природа царит в первозданной красоте и мощи."><img src="images/forest.png" alt="forest"></div>
+        <div class="gallery__item" data-description="Загадочный пейзаж под луной, освещающий путь в неизведанное."><img src="images/moon.png" alt="moon"></div>
+        <div class="gallery__item" data-description="Красная планета Марс в её величественном и суровом обличии."><img src="images/mars.png" alt="mars"></div>
+        <div class="gallery__item" data-description="Темный подземный мир, полный тайн и приключений, ожидающих смелых исследователей."><img src="images/dungeon.png" alt="dungeon"></div>
+        <div class="gallery__item" data-description="Заснеженный полюс Земли, где вечная зима правит и звезды кажутся ближе."><img src="images/earth_pole.png" alt="earth pole"></div>
+        <div class="gallery__item" data-description="Песчаные дюны пустыни, отражающие золотое сияние заходящего солнца."><img src="images/desert.png" alt="desert"></div>
+        <div class="gallery__item" data-description="Секретная лаборатория, полная тайн и научных открытий, скрытая от мира."><img src="images/secret_laboratory.png" alt="secret laboratory"></div>
+        <div class="gallery__item" data-description="Цветущая поляна, полная ярких красок и ароматов, словно из сказки."><img src="images/flower_glade.png" alt="flower glade"></div>
+    </section>
+
+</div>
+
+<div class="modal" id="modal">
+    <span class="modal__close" id="modalClose">&times;</span>
+    <img class="modal__content" id="modalImg">
+    <div class="modal__caption" id="modalCaption"></div>
+</div>
+
+<footer class="footer">
+    <div class="footer__content">
+        <p>Связаться со мной в Telegram: <a href="https://t.me/Azemsss" target="_blank" class="footer__link">@Azemsss</a></p>
+    </div>
+</footer>
+
+<script src="js/scripts.js"></script>
+
+</body>
+</html>
