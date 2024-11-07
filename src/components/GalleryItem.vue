@@ -4,15 +4,17 @@ import { defineProps } from "vue";
 const props = defineProps({
   title: {
     type: String,
-    required: true,
+    default: "",
   },
+
   image: {
     type: String,
-    required: true,
+    default: "",
   },
+
   description: {
     type: String,
-    required: true,
+    default: "",
   },
 });
 </script>

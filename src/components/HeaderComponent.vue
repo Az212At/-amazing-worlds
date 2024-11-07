@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import NavBar from "@/components/NavBar.vue";
 </script>
 
@@ -8,6 +8,4 @@ import NavBar from "@/components/NavBar.vue";
   </header>
 </template>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

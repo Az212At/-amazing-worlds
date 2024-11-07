@@ -22,7 +22,9 @@
         "endOfLine": "auto"
       }
     ],
-    "unused-imports/no-unused-imports": "warn",
+    //    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
+    //    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": "warn",
     "quotes": [
       "error",
@@ -181,6 +183,17 @@
         "useAttrs": "attrs"
       }
     ],
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["@/modules/*/*"],
+            "message": "Используйте public api для импорта"
+          }
+        ]
+      }
+    ],
     "vue/require-name-property": ["error"],
     "vue/require-typed-object-prop": ["error"],
     "vue/require-typed-ref": ["error"],
@@ -188,6 +201,9 @@
     "vue/valid-define-options": ["error"],
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-explicit-any": 0,
-    "curly": ["error", "all"]
+    "curly": ["error", "all"],
+    "@typescript-eslint/no-unused-vars": ["warn"],
+    "no-constant-condition": ["warn"],
+    "no-unreachable": ["warn"]
   }
 }

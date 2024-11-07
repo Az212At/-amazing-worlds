@@ -1,18 +1,19 @@
 <script setup lang="ts">
 import GalleryList from "@/components/GalleryList.vue";
 import { ref } from "vue";
+import agathis from "@/assets/images/agathis.png";
 
 const galleryItems = ref([
   {
     id: 1,
     title: "Gallery Item 1",
-    image: "/path/to/image1.jpg",
+    image: agathis,
     description: "Description of gallery item 1",
   },
   {
     id: 2,
     title: "Gallery Item 2",
-    image: "/path/to/image2.jpg",
+    image: agathis,
     description: "Description of gallery item 2",
   },
   // Добавьте другие элементы по необходимости
@@ -25,5 +26,4 @@ const galleryItems = ref([
   <GalleryList :items="galleryItems" />
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

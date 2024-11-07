@@ -1,5 +1,4 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="home-banner">
@@ -7,7 +6,6 @@
     <p>Explore and share beautiful artworks with the world.</p>
   </div>
 </template>
-
 
 <style scoped>
 .home-banner {
@@ -17,7 +15,6 @@
   height: 300px;
   background-size: cover;
   background-position: center;
-  color: #fff;
   text-align: center;
 }
 </style>

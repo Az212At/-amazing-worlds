@@ -1,3 +1,5 @@
+/// <reference types="vitest" />
+
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import eslintPlugin from "vite-plugin-eslint";
@@ -6,6 +8,11 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import VueDevTools from "vite-plugin-vue-devtools";
 
 export default defineConfig({
+  test: {
+    globals: true,
+    environment: "jsdom",
+  },
+
   plugins: [
     vue(),
     eslintPlugin(),
