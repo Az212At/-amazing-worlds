@@ -1,21 +1,10 @@
-<script>
-export default{
-    name: "HeaderComponent",
-};
+<script setup>
+import NavBar from "@/components/NavBar.vue";
 </script>
 
 <template>
-  <header class="header">
-    <nav class="nav">
-      <ul class="nav__list">
-        <li class="nav__item">
-          <RouterLink to="/" class="nav__link">Главная</RouterLink>
-        </li>
-        <li class="nav__item">
-          <RouterLink to="/gallery" class="nav__link">Галерея</RouterLink>
-        </li>
-      </ul>
-    </nav>
+  <header>
+    <NavBar />
   </header>
 </template>
 

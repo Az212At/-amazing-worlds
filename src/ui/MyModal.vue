@@ -1,64 +1,54 @@
-<script>
-export default {
-  name: "Modal",
-  props: {
-    isVisible: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  methods: {
-    closeModal() {
-      this.$emit("close");
-    },
-  },
+<script setup>
+import { defineProps, defineEmits } from "vue";
+
+defineProps({
+  show: Boolean,
+  title: String,
+});
+
+const emit = defineEmits(["close"]);
+
+const closeModal = () => {
+  emit("close");
 };
 </script>
 
 <template>
-  <div class="modal" v-if="isVisible">
-    <div class="modal-overlay" @click="closeModal"></div>
+  <div v-if="show" class="modal-overlay" @click.self="closeModal">
     <div class="modal-content">
-      <button class="close-button" @click="closeModal">&times;</button>
-      <slot></slot>
+      <button class="close-button" @click="closeModal">✖</button>
+      <h2>{{ title }}</h2>
+      <slot />
     </div>
   </div>
 </template>
 
 <style scoped>
-.modal {
+.modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-}
-
-.modal-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
   background: white;
-  padding: 2rem;
+  padding: 24px;
   border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
   position: relative;
-  z-index: 1001;
 }
 
 .close-button {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 8px;
+  right: 8px;
   background: none;
   border: none;
   font-size: 1.5rem;

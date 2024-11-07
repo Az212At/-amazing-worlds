@@ -1,61 +1,35 @@
-<script>
-import MainLayout from "@/layouts/MainLayout.vue";
+<script setup lang="ts">
 import HomeBanner from "@/components/HomeBanner.vue";
 import GalleryList from "@/components/GalleryList.vue";
+import { ref } from "vue";
 
-export default {
-  name: "HomeView",
-  components: {
-    MainLayout,
-    HomeBanner,
-    GalleryList,
+interface GalleryItemData {
+  id: number;
+  title: string;
+  image: string;
+  description: string;
+}
+
+const galleryItems = ref<GalleryItemData[]>([
+  {
+    id: 1,
+    title: "Item 1",
+    image: "/path/to/image1.jpg",
+    description: "Description of item 1",
   },
-  data() {
-    return {
-      galleryItems: [
-        {
-          id: 1,
-          title: "1",
-          description: "1",
-          image: "#",
-        },
-        {
-          id: 2,
-          title: "2",
-          description: "2",
-          image: "2",
-        },
-        {
-          id: 3,
-          title: "3",
-          description: "3",
-          image: "#",
-        },
-      ],
-    };
+  {
+    id: 2,
+    title: "Item 2",
+    image: "/path/to/image2.jpg",
+    description: "Description of item 2",
   },
-};
+]);
 </script>
 
 <template>
-  <MainLayout>
-    <HomeBanner />
-    <section class="gallery-section">
-      <h2 class="section-title">Gallery</h2>
-      <GalleryList :items="galleryItems" />
-    </section>
-  </MainLayout>
+  <HomeBanner />
+  <GalleryList :items="galleryItems" />
 </template>
 
 <style scoped>
-.gallery-section {
-  padding: 2rem;
-  background-color: #f9f9f9;
-}
-
-.section-title {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
 </style>

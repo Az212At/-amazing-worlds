@@ -1,28 +1,27 @@
-<script>
-export default {
-  name: "GalleryItem",
-  props: {
-    imageSrc: {
-      type: String,
-      required: true,
-    },
-    title: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      default: "#",
-    },
+<script setup lang="ts">
+import { defineProps } from "vue";
+
+const props = defineProps({
+  title: {
+    type: String,
+    required: true,
   },
-};
+  image: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+});
 </script>
 
 <template>
   <div class="gallery-item">
-    <img :src="imageSrc" :alt="title" class="gallery-image" />
-    <h3 class="gallery-title">{{ title }}</h3>
-    <p class="gallery-description">{{ description }}</p>
+    <img :src="props.image" :alt="props.title" />
+    <h3>{{ props.title }}</h3>
+    <p>{{ props.description }}</p>
   </div>
 </template>
 
@@ -30,16 +29,9 @@ export default {
 .gallery-item {
   text-align: center;
 }
-.gallery-image {
-  max-width: 100%;
+.gallery-item img {
+  width: 100%;
+  height: auto;
   border-radius: 8px;
-}
-.gallery-title {
-  font-size: 1.2em;
-  margin-top: 10px;
-}
-.gallery-description {
-  font-size: 0.9em;
-  color: #666;
 }
 </style>

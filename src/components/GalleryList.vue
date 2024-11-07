@@ -1,29 +1,26 @@
-<script>
+<script setup lang="ts">
+import { defineProps } from "vue";
 import GalleryItem from "@/components/GalleryItem.vue";
 
-export default {
-  name: "GalleryList",
-  components: {
-    GalleryItem,
-  },
-  props: {
-    items: {
-      type: Array,
-      required: true,
-      validator: (value) =>
-        value.every((item) => "imageSrc" in item && "title" in item),
-    },
-  },
-};
+interface GalleryItemData {
+  id: number;
+  title: string;
+  image: string;
+  description: string;
+}
+
+const props = defineProps<{
+  items: GalleryItemData[];
+}>();
 </script>
 
 <template>
   <div class="gallery-list">
     <GalleryItem
-      v-for="(item, index) in items"
-      :key="index"
-      :imageSrc="item.imageSrc"
+      v-for="item in props.items"
+      :key="item.id"
       :title="item.title"
+      :image="item.image"
       :description="item.description"
     />
   </div>

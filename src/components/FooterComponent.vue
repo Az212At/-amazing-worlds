@@ -1,7 +1,4 @@
-<script>
-export default{
-    name: "FooterComponent",
-};
+<script setup>
 </script>
 
 <template>
@@ -13,4 +10,10 @@ export default{
 </template>
 
 <style lang="scss" scoped>
+.footer {
+  text-align: center;
+  padding: 16px;
+  background-color: #333;
+  color: #fff;
+}
 </style>

@@ -1,21 +1,11 @@
-<script>
-export default {
-  name: "Card",
-  props: {
-    image: {
-      type: String,
-      required: true,
-    },
-    title: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
-  },
-};
+<script setup>
+import { defineProps } from "vue";
+
+defineProps({
+  title: String,
+  description: String,
+  image: String,
+});
 </script>
 
 <template>
@@ -24,7 +14,6 @@ export default {
     <div class="card-body">
       <h3 class="card-title">{{ title }}</h3>
       <p class="card-description">{{ description }}</p>
-      <slot></slot>
     </div>
   </div>
 </template>

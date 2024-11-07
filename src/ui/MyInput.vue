@@ -1,55 +1,31 @@
-<script>
-export default {
-  name: "Input",
-  props: {
-    label: {
-      type: String,
-      required: true,
-    },
-    modelValue: {
-      type: String,
-      default: "",
-    },
-    placeholder: {
-      type: String,
-      default: "",
-    },
-    inputId: {
-      type: String,
-      default: "input-" + Math.random().toString(36).substr(2, 9),
-    },
-  },
+<script setup>
+import { defineProps, defineEmits } from "vue";
+
+defineProps({
+  modelValue: String,
+  placeholder: String,
+});
+
+const emit = defineEmits(["update:modelValue"]);
+const onInput = (event) => {
+  emit("update:modelValue", event.target.value);
 };
 </script>
 
 <template>
-  <div class="input-group">
-    <label :for="inputId" class="input-label">{{ label }}</label>
-    <input
-      :id="inputId"
-      type="text"
-      :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
-      class="input-field"
-      :placeholder="placeholder"
-    />
-  </div>
+  <input
+    class="my-input"
+    :value="modelValue"
+    :placeholder="placeholder"
+    @input="onInput"
+  />
 </template>
 
 <style scoped>
-.input-group {
-  margin-bottom: 1rem;
-}
-
-.input-label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.input-field {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
+.my-input {
+  padding: 8px;
+  border: 1px solid #ccc;
   border-radius: 4px;
+  width: 100%;
 }
 </style>
