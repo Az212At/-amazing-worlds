@@ -1,42 +1,59 @@
 <script setup lang="ts">
-import { Component, defineProps, PropType } from "vue";
+import { ref, defineProps, PropType } from "vue";
 import GalleryItem from "@/components/GalleryItem.vue";
+import MyModal from "@/ui/MyModal.vue";
 
-defineProps({
+interface GalleryItemData {
+  id: string;
+  title: string;
+  image: string;
+  description: string;
+}
+
+const props = defineProps({
   items: {
     type: Array as PropType<GalleryItemData[]>,
-    default: () => [],
+    required: true,
   },
 });
 
-defineOptions({
-  name: "GalleryList",
-});
+const selectedItem = ref<GalleryItemData | null>(null);
+const showModal = ref(false);
 
-interface GalleryItemData {
-  id: number;
-  title: string;
-  image: Component;
-  description: string;
-}
+const openModal = (item: GalleryItemData) => {
+  selectedItem.value = item;
+  showModal.value = true;
+};
+
+const closeModal = () => {
+  showModal.value = false;
+  selectedItem.value = null;
+};
 </script>
 
 <template>
   <div class="gallery-list">
     <GalleryItem
-      v-for="item in items"
+      v-for="item in props.items"
       :key="item.id"
       :title="item.title"
       :image="item.image"
-      :description="item.description"
+      @click="openModal(item)"
     />
   </div>
+
+  <MyModal :show="showModal" :title="selectedItem?.title" @close="closeModal">
+    <template v-if="selectedItem">
+      <img :src="selectedItem.image" alt="Modal Image" class="modal-image" />
+      <p>{{ selectedItem.description }}</p>
+    </template>
+  </MyModal>
 </template>
 
 <style scoped>
 .gallery-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   padding: 10px;
 }

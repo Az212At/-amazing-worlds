@@ -13,11 +13,24 @@
   </footer>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .footer {
+  background-color: #2c3e50; /* Темно-синий цвет*/
+  color: #ffffff; /* Белый текст */
+  padding: 20px;
   text-align: center;
-  padding: 16px;
-  background-color: #333;
-  color: #fff;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer a {
+  color: #1abc9c; /* Светло-зеленый для ссылок */
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #16a085; /* Более темный зеленый при наведении */
 }
 </style>

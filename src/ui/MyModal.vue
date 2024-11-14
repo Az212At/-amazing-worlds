@@ -1,24 +1,67 @@
-<script setup>
-import { defineProps, defineEmits } from "vue";
+<script setup lang="ts">
+import { defineProps, defineEmits, ref, onMounted, onBeforeUnmount } from "vue";
 
-defineProps({
-  show: Boolean,
-  title: String,
+const props = defineProps({
+  show: {
+    type: Boolean,
+    required: true,
+  },
+
+  title: {
+    type: String,
+    default: "",
+  },
 });
 
 const emit = defineEmits(["close"]);
+const modalRef = ref<HTMLElement | null>(null);
 
 const closeModal = () => {
   emit("close");
 };
+
+// Фокус на модальное окно при открытии
+onMounted(() => {
+  if (modalRef.value) {
+    modalRef.value.focus();
+  }
+});
+
+const handleEscape = (e: KeyboardEvent) => {
+  if (e.key === "Escape") {
+    closeModal();
+  }
+};
+
+onMounted(() => {
+  window.addEventListener("keydown", handleEscape);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("keydown", handleEscape);
+});
 </script>
 
 <template>
-  <div v-if="show" class="modal-overlay" @click.self="closeModal">
+  <div
+    v-if="props.show"
+    aria-hidden="false"
+    role="dialog"
+    class="modal-overlay"
+    @click.self="closeModal"
+  >
     <div class="modal-content">
-      <button class="close-button" @click="closeModal">✖</button>
-      <h2>{{ title }}</h2>
-      <slot />
+      <button
+        type="button"
+        aria-label="Close"
+        class="modal-close"
+        @click="closeModal"
+      >
+        ✖
+      </button>
+      <div>
+        <slot />
+      </div>
     </div>
   </div>
 </template>
@@ -30,28 +73,23 @@ const closeModal = () => {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8); /* Полупрозрачный черный фон */
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  z-index: 999;
 }
 
 .modal-content {
-  background: white;
-  padding: 24px;
-  border-radius: 8px;
-  max-width: 500px;
-  width: 100%;
   position: relative;
-}
-
-.close-button {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+  width: 600px;
+  height: 600px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 </style>
